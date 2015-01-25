@@ -19,6 +19,11 @@ BRANCH="default"
 ### default: "wheezy"
 RELEASE="wheezy" 
 
+# Hostname
+### default: "hummingboard" 
+# hostname you'd like to use
+HOST="hummingboard"
+
 
 #--------------------------------------------------------------------------------------------------------------------------------
 # SD size in MB
