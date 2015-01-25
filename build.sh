@@ -1,51 +1,92 @@
 #!/bin/bash
-#
-# Created by Igor Pecovnik, www.igorpecovnik.com
-#
-# Configuration 
-#--------------------------------------------------------------------------------------------------------------------------------
-
-BOARD="cubox-i"							# bananapi, cubietruck, cubox-i, bananapi-next, cubietruck-next
-BRANCH="default"							# default=3.4.x, mainline=next
-RELEASE="wheezy"                                   		# jessie or wheezy
-
-# numbers
-SDSIZE="1200"                               			# SD image size in MB
-REVISION="2.4"                          			# image release version
-
-# method
-SOURCE_COMPILE="yes"             				# force source compilation: yes / no
-KERNEL_CONFIGURE="no"           				# want to change my default configuration
-KERNEL_CLEAN="yes"						# run MAKE clean before kernel compilation
-USEALLCORES="yes"                           			# Use all CPU cores for compiling
-
-# user 
-DEST_LANG="en_US.UTF-8"                     			# sl_SI.UTF-8, en_US.UTF-8
-TZDATA="Europe/Ljubljana"               			# Timezone
-ROOTPWD="1234"                              			# Must be changed @first login
-MAINTAINER="Igor Pecovnik"                  			# deb signature
-MAINTAINERMAIL="igor.pecovnik@****l.com"    			# deb signature
-
-# advanced
-FBTFT="no"                                 			# https://github.com/notro/fbtft 
-EXTERNAL="no"                           			# compile extra drivers`
 
 #--------------------------------------------------------------------------------------------------------------------------------
+# Which board are we building for?
+# choose "cubox-i" for hummingboard;
+### valid options: "bananapi", "cubietruck", "cubox-i", "bananapi-next", "cubietruck-next"
+BOARD="cubox-i"
 
-# source is where we start the script
+# Branch
+# don't change this if you don't know what this is
+### valid options:
+# "default" = 3.4.x
+# "mainline" = next
+BRANCH="default"
+
+# Which Debian release are we building?
+### valid options:
+# "jessie" "wheezy"
+### default: "wheezy"
+RELEASE="wheezy" 
+
+
+#--------------------------------------------------------------------------------------------------------------------------------
+# SD size in MB
+### default: "1200" 
+# (1.2GB) will be automatically expanded to fit your SD card on first boot.
+# does not need to be changed!
+SDSIZE="1200"
+
+# image release version
+REVISION="2.4"
+
+#--------------------------------------------------------------------------------------------------------------------------------
+
+# compile sources
+### default: "yes"
+SOURCE_COMPILE="yes"
+
+# change default configuration
+### default: "no"
+KERNEL_CONFIGURE="no"
+
+# MAKE clean before kernel compilation
+### default: "yes"
+KERNEL_CLEAN="yes"
+
+# Use all CPU cores for compiling
+### default: "yes"
+USEALLCORES="yes"
+
+#--------------------------------------------------------------------------------------------------------------------------------
+
+# Locale settings
+# set your locale
+### default: "en_US.UTF-8"
+DEST_LANG="en_US.UTF-8"
+
+# Time zone settings
+# set your timezone
+### default: "America/Vancouver"
+TZDATA="America/Vancouver"
+
+# Root password
+# must be changed on first login
+### default: "root"
+ROOTPWD="root"
+
+
+MAINTAINER="dowjames" # deb signature
+MAINTAINERMAIL="" # deb signature
+
+#--------------------------------------------------------------------------------------------------------------------------------
+
+# Linux Framebuffer drivers for small TFT LCD display modules 
+# https://github.com/notro/fbtft
+### default: "no"
+FBTFT="no"
+
+# compile external drivers?
+### default: "no"
+EXTERNAL="no"
+
+#--------------------------------------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------------------------
+# DON'T EDIT BELOW
+#--------------------------------------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------------------------
+
+
 SRC=$(pwd)
-
-# destination
-DEST=$(pwd)/output
-
-# get updates of the main build libraries
-if [ -d "$SRC/lib" ]; then
-    cd $SRC/lib
-    git pull 
-else
-    # download SDK
-    git clone https://github.com/igorpecovnik/lib
-fi
-
+DEST=$(pwd)"/output"
 source $SRC/lib/main.sh
-#--------------------------------------------------------------------------------------------------------------------------------
