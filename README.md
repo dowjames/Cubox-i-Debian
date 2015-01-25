@@ -10,7 +10,6 @@ HOWTO
 - Login as root:
 ```shell
 apt-get -y install git
-cd ~
 git clone https://github.com/dowjames/Cubox-i-Debian
 cd Cubox-i-Debian
 chmod +x build.sh
