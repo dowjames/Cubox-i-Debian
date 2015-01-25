@@ -12,8 +12,8 @@ HOWTO
 apt-get -y install git
 cd ~
 git clone https://github.com/dowjames/Cubox-i-Debian
-chmod +x ./Cubox-i-Debian/build.sh
 cd Cubox-i-Debian
+chmod +x build.sh
 ```
 Edit build.sh to your liking, then:
 
