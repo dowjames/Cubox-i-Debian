@@ -23,7 +23,7 @@ if [ -d "$DEST/$2" ]; then
 	git pull 
 	cd $SRC
 else
-	git clone $1 $DEST/$2	
+	git clone --depth 1 $1 $DEST/$2	
 fi
 }
 
