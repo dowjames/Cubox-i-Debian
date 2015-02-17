@@ -29,7 +29,6 @@ HOST="hummingboard"
 # SD size in MB
 ### default: "1200" 
 # (1.2GB) will be automatically expanded to fit your SD card on first boot.
-# does not need to be changed!
 SDSIZE="1200"
 
 # image release version
