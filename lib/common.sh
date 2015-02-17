@@ -5,9 +5,9 @@ download_host_packages (){
 # Download packages for host - Ubuntu 14.04 recommended                     
 #--------------------------------------------------------------------------------------------------------------------------------
 apt-get -y -qq install debconf-utils
-debconf-apt-progress -- apt-get -y install pv bc lzop zip binfmt-support bison build-essential ccache debootstrap flex gawk 
-debconf-apt-progress -- apt-get -y install gcc-arm-linux-gnueabihf lvm2 qemu-user-static u-boot-tools uuid-dev zlib1g-dev unzip 
-debconf-apt-progress -- apt-get -y install libusb-1.0-0-dev parted pkg-config expect gcc-arm-linux-gnueabi libncurses5-dev
+apt-get -y install pv bc lzop zip binfmt-support bison build-essential ccache debootstrap flex gawk 
+apt-get -y install gcc-arm-linux-gnueabihf lvm2 qemu-user-static u-boot-tools uuid-dev zlib1g-dev unzip 
+apt-get -y install libusb-1.0-0-dev parted pkg-config expect gcc-arm-linux-gnueabi libncurses5-dev
 }
 
 
@@ -244,7 +244,8 @@ echo "------ Debootstrap $RELEASE to image template"
 cd $DEST/output
 
 # create needed directories and mount image to next free loop device
-mkdir -p /root/solidrun/output/output/rootfs /root/solidrun/output/output/sdcard/ /root/solidrun/output/output/kernel
+mkdir -p $DEST/output/rootfs $DEST/output/sdcard/ $DEST/output/kernel
+
 
 # create image file
 dd if=/dev/zero of=$DEST/output/rootfs/$RELEASE.raw bs=1M count=$SDSIZE status=noxfer
